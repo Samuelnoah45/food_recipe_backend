@@ -1,0 +1,65 @@
+type Query {
+  Signup(
+    email: String!
+    password: String!
+    name: String!
+  ): signupOutput
+}
+
+type Mutation {
+  changePassword(
+    email: String!
+    newPassword: String!
+    oldPassword: String!
+  ): changeOutput
+}
+
+type Query {
+  signin(
+    email: String!
+    password: String!
+  ): loginOutput
+}
+
+type Query {
+  uploadImage(
+    base64String: [String!]
+  ): uploadOutput
+}
+
+input SampleInput {
+  userId: String
+  name: String
+  email: String
+  token: String
+}
+
+type SampleOutput {
+  email: String
+  name: String
+  token: String
+}
+
+type uploadOutput {
+  urls: [String]
+}
+
+type loginOutput {
+  email: String
+  name: String
+  token: String
+  userId: String
+  image: String
+}
+
+type signupOutput {
+  email: String
+  name: String
+  token: String
+  userId: String
+}
+
+type changeOutput {
+  message: String!
+}
+

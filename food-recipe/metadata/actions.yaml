@@ -1,0 +1,39 @@
+actions:
+  - name: Signup
+    definition:
+      kind: ""
+      handler: https://food-recipe-server.onrender.com/Signup
+    permissions:
+      - role: user
+      - role: anonymous
+  - name: changePassword
+    definition:
+      kind: synchronous
+      handler: https://food-recipe-server.onrender.com/changePassword
+      forward_client_headers: true
+    permissions:
+      - role: user
+  - name: signin
+    definition:
+      kind: ""
+      handler: https://food-recipe-server.onrender.com/login
+    permissions:
+      - role: user
+      - role: anonymous
+  - name: uploadImage
+    definition:
+      kind: ""
+      handler: https://food-recipe-server.onrender.com/upload
+    permissions:
+      - role: user
+custom_types:
+  enums: []
+  input_objects:
+    - name: SampleInput
+  objects:
+    - name: SampleOutput
+    - name: uploadOutput
+    - name: loginOutput
+    - name: signupOutput
+    - name: changeOutput
+  scalars: []
