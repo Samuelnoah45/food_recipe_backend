@@ -8,7 +8,7 @@ const apollo_client = new ApolloClient({
         uri: 'https://accurate-vervet-15.hasura.app/v1/graphql',
         headers: {
             "content-type": "application/json",
-            "x-hasura-admin-secret":"skyisbluesamuelnoah",
+            "x-hasura-admin-secret":"YJH4s7x9412ZUUDSFd5MiBOsuySqYnokDj5fPhV04qcpTm8YeGjV2Wbp7wg4yUEQ",
         }
     }),
     cache: new InMemoryCache()
