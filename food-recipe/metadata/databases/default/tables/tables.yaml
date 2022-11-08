@@ -1,7 +1,0 @@
-- "!include public_Ingredients.yaml"
-- "!include public_comments.yaml"
-- "!include public_food.yaml"
-- "!include public_images.yaml"
-- "!include public_rating.yaml"
-- "!include public_steps.yaml"
-- "!include public_users.yaml"
