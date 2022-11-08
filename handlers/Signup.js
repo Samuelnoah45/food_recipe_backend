@@ -74,6 +74,7 @@ const signupHandler = async (req, res) => {
     }
     `,
     variables: variables,
+    fetchPolicy: "no-cache" 
   });
   
   console.log(data.data.insert_users_one.id);

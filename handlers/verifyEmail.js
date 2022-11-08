@@ -20,6 +20,8 @@ const verifyEmail = async (req, res) =>
  let data = await apollo_client.mutate({
     mutation: VERIFY_USER,
     variables: { token },
+    fetchPolicy: "network-only" 
+
  });
     
   

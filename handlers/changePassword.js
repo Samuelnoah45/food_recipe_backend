@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
 const loginHandler = async (req, res) => {
- 
+    console.log(req.body);
   const credientials = req.body.input;
   const email = credientials.email;
   const newPassword = credientials.newPassword;
@@ -23,7 +23,7 @@ const loginHandler = async (req, res) => {
 
 
   let CHANGE_PASSWORD = gql`
-          mutation ($id:Int!,$password:String!){
+          mutation ($id:uuid!,$password:String!){
           update_users(where: {id: {_eq: $id}}, _set: {password:$password}) {
           affected_rows
             returning{

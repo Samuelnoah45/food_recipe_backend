@@ -17,6 +17,7 @@ const loginHandler = async (req, res) => {
       email
       password
       verifyEmail
+      image
      
     }}
   
@@ -25,6 +26,7 @@ const loginHandler = async (req, res) => {
   let data = await apollo_client.query({
     query: GET_USER,
     variables: { email },
+    fetchPolicy: "network-only" 
   });
   
 
@@ -65,7 +67,8 @@ const loginHandler = async (req, res) => {
         email: user.email,
         name: user.name,
         token: token,
-        userId: user.id
+        userId: user.id,
+        image:user.image
       });
 
     }

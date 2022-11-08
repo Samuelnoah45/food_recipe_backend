@@ -13,7 +13,7 @@ const verifyEmail =require("./handlers/verifyEmail")
 dotenv.config({path: "variables.env"});
 var upload = multer();
 const app = express();
-const port =  7000;
+var port = process.env.PORT || 7000;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
