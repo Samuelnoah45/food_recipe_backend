@@ -24,7 +24,7 @@ const sendMail =  function (email,token)
         from: 'busibusi4545@gmail.com',
         to: email,
         subject: 'Email verification - skyrecipe.com',
-        html: '<p>You requested for email verification, kindly use this <a href="http://localhost:3000/verifying?token=' + token + '">link</a> to verify your email address</p>'
+        html: '<p>You requested for email verification, kindly use this <a href="https://skyfoodrecipe.netlify.app/verifying?token=' + token + '">link</a> to verify your email address</p>'
  
     };
  
