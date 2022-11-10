@@ -9,7 +9,7 @@ var nodemailer = require('nodemailer');
 const sendMail =  function (email,token)
 {
     
-    var email ="samuelnoah668@gmail.com";
+    var email =email;
     var token = token;
  
     var mail = nodemailer.createTransport({
@@ -24,7 +24,7 @@ const sendMail =  function (email,token)
         from: 'busibusi4545@gmail.com',
         to: email,
         subject: 'Email verification - skyrecipe.com',
-        html: '<p>You requested for email verification, kindly use this <a href="http://localhost:7000/verifyEmail?token=' + token + '">link</a> to verify your email address</p>'
+        html: '<p>You requested for email verification, kindly use this <a href="http://localhost:3000/verifying?token=' + token + '">link</a> to verify your email address</p>'
  
     };
  
@@ -94,15 +94,31 @@ const signupHandler = async (req, res) => {
   })
 
   
-   
-  const sent =  sendMail(vemail, verifyToken);
+  let data2 = await apollo_client.mutate({
+    mutation: gql`
+  mutation ($token: String!, $id: uuid!) {
+  update_users(_set: {verificationToken: $token}, where: {id: {_eq:$id}}) {
+    affected_rows
+  }
+}
+
+
+    `,
+    variables: {token:token,
+         id:data.data.insert_users_one.id},
+    fetchPolicy: "no-cache" 
+  });
+  
+  console.log(data2); 
+  const sent =  sendMail(vemail, token);
   
   if (sent != 0) {
     return res.json({
-      userId:data.data.insert_users_one.id,
+    userId:data.data.insert_users_one.id,
     token,
     email: data.data.insert_users_one.email,
     name: data.data.insert_users_one.name, 
+    image:data.data.insert_users_one.image, 
   })
 
   }

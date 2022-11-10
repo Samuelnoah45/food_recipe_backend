@@ -25,7 +25,7 @@ app.post("/Signup", signupHandler);
 app.post('/upload',upload.array('image',3),uploadImage);
 app.post('/login', loginHundler);
 app.post('/changePassword', changePassword);
-app.get('/verifyEmail',verifyEmail);
+app.post('/verifyEmail',verifyEmail);
 
 
 const server = http.createServer(app);
