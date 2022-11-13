@@ -23,7 +23,12 @@ services:
       HASURA_GRAPHQL_UNAUTHORIZED_ROLE: anonymous
       ## uncomment next line to set an admin secret
       HASURA_GRAPHQL_ADMIN_SECRET: skyisbluesamuelnoah
-      HASURA_GRAPHQL_JWT_SECRET: '{"type": "HS256", "key": "skyisbluehsvhUI5tr3xcmbjSLgprpP0LIB3W3pgxhmZsamuelnoah"}'
+      HASURA_GRAPHQL_JWT_SECRET: '{
+    "type":"RS256",
+    "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com",
+    "audience": "moonlit-cistern-340519",
+    "issuer": "https://securetoken.google.com/moonlit-cistern-340519"
+}'
 
       
 

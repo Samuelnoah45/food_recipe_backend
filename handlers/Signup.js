@@ -3,8 +3,10 @@ const apollo_client = require("../utils/apollo");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const randToken = require('rand-token')
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey("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")
 
-var nodemailer = require('nodemailer');
+// var nodemailer = require('nodemailer');
 
 const sendMail =  function (email,token)
 {
@@ -12,35 +14,57 @@ const sendMail =  function (email,token)
     var email =email;
     var token = token;
  
-    var mail = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: 'busibusi4545@gmail.com', 
-            pass: 'gyizzfxluigoalum' //
-        }
-    });
+const msg = {
+  to: 'samuelnoah668@gmail.com', // Change to your recipient
+  from: 'busibusi4545@gmail.com', // Change to your verified sender
+  subject: 'Verify you email',
  
-    var mailOptions = {
-        from: 'busibusi4545@gmail.com',
-        to: email,
-        subject: 'Email verification - skyrecipe.com',
-        html: '<p>You requested for email verification, kindly use this <a href="https://skyfoodrecipe.netlify.app/verifying?token=' + token + '">link</a> to verify your email address</p>'
- 
-    };
- 
-    mail.sendMail(mailOptions, function (error, info)
-    {
-      if (error) {
-     console.log(error);
-        return 1
-        
-      } else {
+  html: '<strong><p>You requested for email verification, kindly use this <a href="https://skyfoodrecipe.netlify.app/verifying?token=' + token + '">link</a> to verify your email address</p></strong>',
+}
 
-     console.log("wowowoowowow");
+sgMail
+  .send(msg)
+  .then((response) => {
+    console.log(response[0].statusCode)
+    console.log(response[0].headers)
+        return 0
+
+  })
+  .catch((error) => {
+  
+    console.error(error.response.body)
+        return 1
+
+  })
+    // var mail = nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //         user: 'busibusi4545@gmail.com', 
+    //         pass: 'gyizzfxluigoalum' //
+    //     }
+    // });
+ 
+    // var mailOptions = {
+    //     from: 'busibusi4545@gmail.com',
+    //     to: email,
+    //     subject: 'Email verification - skyrecipe.com',
+    //     html: '<p>You requested for email verification, kindly use this <a href="https://skyfoodrecipe.netlify.app/verifying?token=' + token + '">link</a> to verify your email address</p>'
+ 
+    // };
+ 
+    // mail.sendMail(mailOptions, function (error, info)
+    // {
+    //   if (error) {
+    //  console.log(error);
+    //     return 1
         
-            return 0
-        }
-    });
+    //   } else {
+
+    //  console.log("wowowoowowow");
+        
+    //         return 0
+    //     }
+    // });
 }
 
 const signupHandler = async (req, res) => {

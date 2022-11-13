@@ -10,6 +10,7 @@ const loginHundler = require("./handlers/Login.js");
 const uploadImage = require("./handlers/upload.js");
 const changePassword = require("./handlers/changePassword")
 const verifyEmail =require("./handlers/verifyEmail")
+const sendGrid =require("./handlers/sendGrid")
 dotenv.config({path: "variables.env"});
 var upload = multer();
 const app = express();
@@ -22,6 +23,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');	
 
 app.post("/Signup", signupHandler);
+app.post("/", sendGrid);
 app.post('/upload',upload.array('image',3),uploadImage);
 app.post('/login', loginHundler);
 app.post('/changePassword', changePassword);
