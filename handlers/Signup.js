@@ -15,10 +15,9 @@ const sendMail =  function (email,token)
     var token = token;
  
 const msg = {
-  to: 'samuelnoah668@gmail.com', // Change to your recipient
+  to: email, // Change to your recipient
   from: 'busibusi4545@gmail.com', // Change to your verified sender
   subject: 'Verify you email',
- 
   html: '<strong><p>You requested for email verification, kindly use this <a href="https://skyfoodrecipe.netlify.app/verifying?token=' + token + '">link</a> to verify your email address</p></strong>',
 }
 
@@ -27,44 +26,18 @@ sgMail
   .then((response) => {
     console.log(response[0].statusCode)
     console.log(response[0].headers)
+    console.log("sent");
         return 0
 
   })
   .catch((error) => {
+    console.log("error");
   
     console.error(error.response.body)
         return 1
 
   })
-    // var mail = nodemailer.createTransport({
-    //     service: 'gmail',
-    //     auth: {
-    //         user: 'busibusi4545@gmail.com', 
-    //         pass: 'gyizzfxluigoalum' //
-    //     }
-    // });
- 
-    // var mailOptions = {
-    //     from: 'busibusi4545@gmail.com',
-    //     to: email,
-    //     subject: 'Email verification - skyrecipe.com',
-    //     html: '<p>You requested for email verification, kindly use this <a href="https://skyfoodrecipe.netlify.app/verifying?token=' + token + '">link</a> to verify your email address</p>'
- 
-    // };
- 
-    // mail.sendMail(mailOptions, function (error, info)
-    // {
-    //   if (error) {
-    //  console.log(error);
-    //     return 1
-        
-    //   } else {
-
-    //  console.log("wowowoowowow");
-        
-    //         return 0
-    //     }
-    // });
+    
 }
 
 const signupHandler = async (req, res) => {

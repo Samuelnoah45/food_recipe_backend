@@ -1,13 +1,13 @@
 const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey("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")
 const sendGrid = async (req, res) => {
- 
+    console.log("sendgrid");
 const msg = {
   to: 'samuelnoah668@gmail.com', // Change to your recipient
   from: 'busibusi4545@gmail.com', // Change to your verified sender
   subject: 'Verify you email',
- 
-  html: '<strong><p>You requested for email verification, kindly use this <a href="https://skyfoodrecipe.netlify.app/verifying?token=' + token + '">link</a> to verify your email address</p></strong>',
+  text: 'and easy to do anywhere, even with Node.js',
+  html: '<strong>and easy to do anywhere, even with Node.js</strong>',
 }
 
 sgMail
